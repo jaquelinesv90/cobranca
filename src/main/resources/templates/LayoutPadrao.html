@@ -10,20 +10,12 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img alt="AlgaWorks" src="/images/logo-algaworks.png" />
-                </a>
-            </div>
-        </div>
-    </nav>
-    
-    <section layout:fragment="conteudo">
-    	<p>Conteúdo principal</p>
-    </section>
-    
+	<header th:replace="Cabecalho"></header>
+	
+	<section layout:fragment="conteudo">
+		<p>Conteúdo principal</p>
+	</section>
+	
 	<script src="/js/jquery-2.1.4.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 </body>

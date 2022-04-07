@@ -2,16 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="LayoutPadrao">
+	layout:decorate="~{LayoutPadrao}">
 
 <head>
 <title>Pesquisa de títulos</title>
 </head>
 
-<section layout:fragment="conteudo">
+<div layout:fragment="conteudo">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h1 class="panel-title">Pesquisa de Titulos</h1>
+			<a class="btn btn-link" href="/titulos/novo">Novo Titulo</a>
 		</div>
 
 		<div class="panel-body">
@@ -35,5 +36,5 @@
 			</table>
 		</div>
 	</div>
-</section>
+</div>
 </html>
