@@ -48,8 +48,11 @@ public class TituloController {
 //métodos usados na tela de pesquisa de titulo
 	
 	@RequestMapping
-	public String pesquisar() {
-		return "PesquisaTitulos";
+	public ModelAndView pesquisar() {
+		List<Titulo> todosTitulos = titulos.findAll();
+		ModelAndView mv = new ModelAndView("PesquisaTitulos");
+		mv.addObject("titulos",todosTitulos);
+		return mv;
 	}
 	
 
