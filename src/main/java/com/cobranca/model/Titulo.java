@@ -29,7 +29,7 @@ public class Titulo {
 	@Temporal(TemporalType.DATE)
 	private Date dataVencimento;
 	
-	@NotNull
+	@NotNull(message="Valor não pode ser nulo")
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valor;
 	
