@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,13 +24,15 @@ public class TituloController {
 
 //métodos usados na tela de cadastro de titulo
 	
+	private static final String CADASTRO_VIEW = "CadastroTitulo";
+	
 	@Autowired
 	private Titulos titulos;
 	
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView("CadastroTitulo");
+		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(new Titulo());
 		return mv;
 	}
@@ -38,7 +41,7 @@ public class TituloController {
 	public String salvar(@Validated Titulo titulo, Errors errors,RedirectAttributes attributes) {
 		
 		if(errors.hasErrors()) {
-			return "CadastroTitulo";
+			return CADASTRO_VIEW;
 		}
 		
 		titulos.save(titulo);
@@ -50,6 +53,18 @@ public class TituloController {
 	public List<StatusTitulo> todosStatusTitulo(){
 		return Arrays.asList(StatusTitulo.values());
 	}
+	
+	//método usado na edição do registro
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable Long codigo) {
+		
+		@SuppressWarnings("deprecation")
+		Titulo titulo = titulos.getOne(codigo);
+		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
+		mv.addObject(titulo);
+		return mv;
+	}
+	
 	
 //métodos usados na tela de pesquisa de titulo
 	
