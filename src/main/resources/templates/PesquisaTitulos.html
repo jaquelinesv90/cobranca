@@ -44,7 +44,8 @@
 								<span class="glyphicon glyphicon-pencil"></span>
 							</a>
 							
-							<a class="btn btn-link btn-xs">
+							<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+								th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}">
 								<span class="glyphicon glyphicon-remove"></span>
 							</a>	
 						</td>
@@ -54,9 +55,10 @@
 						<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum título foi encontrado</td>
 					</tr>
 				</tbody>
-
 			</table>
 		</div>
+		
+		<div th:replace="DialogoConfirmacaoExclusao"></div>
 	</div>
 </div>
 </html>

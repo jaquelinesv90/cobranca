@@ -75,4 +75,12 @@ public class TituloController {
 		mv.addObject("titulos",todosTitulos);
 		return mv;
 	}
+	
+	
+// métodos usados no icone de excluir
+	@RequestMapping(value= {"codigo"},method = RequestMethod.DELETE)
+	public void excluir(@PathVariable Long codigo) {
+		titulos.deleteById(codigo);
+	}
+	
 }
