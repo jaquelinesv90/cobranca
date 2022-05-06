@@ -79,8 +79,12 @@ public class TituloController {
 	
 // métodos usados no icone de excluir
 	@RequestMapping(value= {"codigo"},method = RequestMethod.DELETE)
-	public void excluir(@PathVariable Long codigo) {
+	public String excluir(@PathVariable Long codigo,RedirectAttributes attributes) {
 		titulos.deleteById(codigo);
+		
+		attributes.addFlashAttribute("mensagem","Título excluído com sucesso!");
+		
+		return "redirect:/titulos";
 	}
 	
 }
