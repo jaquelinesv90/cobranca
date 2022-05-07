@@ -9,7 +9,7 @@
 </head>
 
 <div layout:fragment="conteudo">
-	<div th:replace="Mensagem"></div>
+	<div th:replace="MensagemGeral"></div>
 	
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -39,7 +39,7 @@
 						<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>
 						<td class="text-center">
 							<span class="label" th:text="${titulo.status.descricao}"
-							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}"></span>						
+								th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}"></span>						
 						</td>
 						<td class="text-center">
 							<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}">
@@ -47,7 +47,7 @@
 							</a>
 							
 							<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
-								th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}">
+									th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}">
 								<span class="glyphicon glyphicon-remove"></span>
 							</a>	
 						</td>
