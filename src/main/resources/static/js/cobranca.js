@@ -19,4 +19,5 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event){
 
 $(function(){
 	$('[rel="tootip"]').tooltip();
+	$('.js-currency').maskmoney({decimal: ',',thousands: '.', allowZero:true});
 });
