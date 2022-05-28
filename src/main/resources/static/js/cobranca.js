@@ -17,7 +17,20 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event){
 	modal.find('.modal-body span').html('Tem certeza que deseja excluir o título <strong>'+descricaoTitulo +'</strong?>');
 });
 
+/*quando a pagina é carregada ele cai nessa função
+  event.preventDefault(); - não faça o comportamento default do link que é encaminhar a requisição
+*/
 $(function(){
 	$('[rel="tootip"]').tooltip();
 	$('.js-currency').maskMoney({decimal: ',',thousands: '.', allowZero:true});
+	
+	$('.js-atualizar-status').on('click', function(event){
+		event.preventDefault();
+		
+		var botaoReceber = $(event.currentTarget);
+		var urlReceber = botaoReceber.attr('href');
+		
+		console.log('urlReceber',urlReceber);
+		
+	});
 });
