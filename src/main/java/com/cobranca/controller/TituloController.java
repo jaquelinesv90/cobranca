@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cobranca.model.StatusTitulo;
 import com.cobranca.model.Titulo;
 import com.cobranca.repository.Titulos;
+import com.cobranca.service.CadastroTituloService;
 
 @Controller
 @RequestMapping("/titulos")
@@ -29,7 +30,8 @@ public class TituloController {
 	
 	@Autowired
 	private Titulos titulos;
-	
+	@Autowired
+	private CadastroTituloService cadastroTituloService;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
@@ -47,7 +49,7 @@ public class TituloController {
 		
 		try {
 
-			titulos.save(titulo);
+			cadastroTituloService.salvar(titulo);
 			attributes.addFlashAttribute("mensagem","Título salvo com sucesso!");
 			return "redirect:/titulos/novo";
 		}catch(DataIntegrityViolationException e) {
@@ -76,7 +78,6 @@ public class TituloController {
 	
 	
 //métodos usados na tela de pesquisa de titulo
-	
 	@RequestMapping
 	public ModelAndView pesquisar() {
 		List<Titulo> todosTitulos = titulos.findAll();
@@ -89,7 +90,7 @@ public class TituloController {
 // métodos usados no icone de excluir
 	@RequestMapping(value= {"codigo"}, method = RequestMethod.DELETE)
 	public String excluir(@PathVariable Long codigo,RedirectAttributes attributes) {
-		titulos.deleteById(codigo);
+		cadastroTituloService.excluir(codigo);
 		
 		attributes.addFlashAttribute("mensagem","Título excluído com sucesso!");
 		
