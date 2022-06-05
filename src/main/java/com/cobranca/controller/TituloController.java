@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cobranca.model.StatusTitulo;
 import com.cobranca.model.Titulo;
-import com.cobranca.repository.Titulos;
+import com.cobranca.repository.filter.TituloFilter;
 import com.cobranca.service.CadastroTituloService;
 
 @Controller
@@ -29,8 +29,6 @@ public class TituloController {
 	
 	private static final String CADASTRO_VIEW = "CadastroTitulo";
 	
-	@Autowired
-	private Titulos titulos;
 	@Autowired
 	private CadastroTituloService cadastroTituloService;
 	
@@ -68,27 +66,28 @@ public class TituloController {
 	
 	//método usado na edição do registro
 	@RequestMapping("{codigo}")
-	public ModelAndView edicao(@PathVariable Long codigo) {
+	public ModelAndView edicao(@PathVariable("codigo") Titulo titulo) {
 		
-		@SuppressWarnings("deprecation")
-		Titulo titulo = titulos.getOne(codigo);
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(titulo);
 		return mv;
 	}
 	
 	
-//métodos usados na tela de pesquisa de titulo
+//método usado na tela de listagem de titulo - para pesquisa dos titulos
+	
+//	
 	@RequestMapping
-	public ModelAndView pesquisar() {
-		List<Titulo> todosTitulos = titulos.findAll();
+	public ModelAndView pesquisar(@ModelAttribute("filtro") TituloFilter filtro) {
+		List<Titulo> todosTitulos = cadastroTituloService.filtrar(filtro);
+		
 		ModelAndView mv = new ModelAndView("PesquisaTitulos");
 		mv.addObject("titulos",todosTitulos);
 		return mv;
 	}
 	
 	
-// métodos usados no icone de excluir
+    // métodos usados no icone de excluir
 	@RequestMapping(value= {"codigo"}, method = RequestMethod.DELETE)
 	public String excluir(@PathVariable Long codigo,RedirectAttributes attributes) {
 		cadastroTituloService.excluir(codigo);
