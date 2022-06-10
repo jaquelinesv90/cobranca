@@ -1,15 +1,18 @@
+/* tela grande */
+@media(min-width: 768px){
+	.panel-default{
+		margin-left: 10px;
+		margin-right:10px;
+	}
+	
+	.alert{
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+}
+
 .navbar-brand{
 	padding-top: 12px;
-}
-
-.panel-default{
-	margin-left: 10px;
-	margin-right:10px;
-}
-
-.alert{
-	margin-left: 10px;
-	margin-right: 10px;
 }
 
 .aw-link-panel{
@@ -21,3 +24,4 @@
 	float:left;
 	padding-top:2px;
 }
+
