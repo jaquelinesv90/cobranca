@@ -25,7 +25,7 @@ import com.cobranca.service.CadastroTituloService;
 @RequestMapping("/titulos")
 public class TituloController {
 
-//métodos usados na tela de cadastro de titulo
+//métodos usados na tela de listagem/cadastro de titulo
 	
 	private static final String CADASTRO_VIEW = "CadastroTitulo";
 	
@@ -74,9 +74,10 @@ public class TituloController {
 	}
 	
 	
-//método usado na tela de listagem de titulo - para pesquisa dos titulos
-	
-//	
+/* método usado na tela de listagem de titulo - para pesquisa dos titulos
+ * @ModelAttribute - aassocia um parametro de método ou valor de retorno a 
+ * um atributo de modelo nomeado, em seguida expõe a uma exibição da web
+ */
 	@RequestMapping
 	public ModelAndView pesquisar(@ModelAttribute("filtro") TituloFilter filtro) {
 		List<Titulo> todosTitulos = cadastroTituloService.filtrar(filtro);
@@ -97,11 +98,11 @@ public class TituloController {
 		return "redirect:/titulos";
 	}
 	
-	// o responseBody foi usado pois eu quero retornar uma string que não é
-	// uma view somente uma msg
+	/*  o responseBody foi usado pois eu quero retornar uma string que não é
+	 *  uma view somente uma msg
+	 */
 	@RequestMapping(value = "/{codigo}/receber", method = RequestMethod.PUT)
 	public @ResponseBody String receber(@PathVariable Long codigo) {
 		return cadastroTituloService.receber(codigo);
 	}
-	
 }
