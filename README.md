@@ -6,12 +6,12 @@
  <b>Understanding the project</b>
  <ul style="list type:square">
 <li>Spring MVC</li>
- Thymeleaf
- Boostrap
- Spring Data JPA
- Maven
- MySQL
- JPA,Hibernate
+<li>Thymeleaf</li>
+<li>Boostrap</li>
+<li>Spring Data JPA</li>
+<li>Maven</li>
+<li>MySQL</li>
+<li>JPA,Hibernate</li>
  
  
  
