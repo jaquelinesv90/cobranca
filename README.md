@@ -12,15 +12,15 @@
 <li>Maven</li>
 <li>MySQL</li>
 <li>JPA,Hibernate</li>
+<br>
  
  
  
  ![prot_tela](https://user-images.githubusercontent.com/3721252/160146467-dfca3e1b-aad4-458b-8032-26659f1e603a.png)
  
  
- ![novo_titulo](https://user-images.githubusercontent.com/3721252/174488551-c3e955b3-7a38-44a0-aac5-eff5228420e7.png)
 
- To access :  localhost:8081/titulos
+After download the project you can access :  localhost:8081/titulos
  
  
  
